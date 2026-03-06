@@ -22,6 +22,11 @@ io.on("connection", (socket) => {
     socket.on("bang", () => {
         socket.broadcast.emit("bang");   // send to all clients except the sender
     });
+
+    socket.on("message", (message) => {
+        console.log(message);
+        io.emit("message", message );    // send to all clients
+    });
 });
 
 // Launch server
